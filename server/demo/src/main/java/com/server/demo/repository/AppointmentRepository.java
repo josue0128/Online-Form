@@ -1,11 +1,11 @@
 package com.server.demo.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.server.demo.model.Appointment;
-import java.util.Optional;
 
 
-public interface AppointmentRepository extends CrudRepository<Appointment, String>{
-    public Optional<Appointment> findById(String id);
+public interface AppointmentRepository extends JpaRepository<Appointment,String> {
+    
 }

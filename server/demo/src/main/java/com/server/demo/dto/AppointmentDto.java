@@ -10,13 +10,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AppointmentDto{
-    private String id;
-    private String f_name;
-    private String last_name;
+    private String firstName;
+    private String lastName;
     private String email;
-    private String cell_phone;
-    private String pet_name;
+    private String phoneNumber;
+    private String petName;
     private String brea;
-    private Integer age;
-    private String orther_information;
+    private int age;
+    private String otherInformation;
 }

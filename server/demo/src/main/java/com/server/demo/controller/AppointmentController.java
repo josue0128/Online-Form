@@ -1,5 +1,6 @@
 package com.server.demo.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,26 +11,28 @@ import org.springframework.web.bind.annotation.RestController;
 import com.server.demo.dto.AppointmentDto;
 import com.server.demo.model.Appointment;
 import com.server.demo.repository.AppointmentRepository;
+import com.server.demo.service.AppointmentService;
 
 @RestController
 @RequestMapping("/appointment")
 public class AppointmentController {
-    private AppointmentRepository appointmentRepository;
+    @Autowired
+    AppointmentService appointmentService;
 
     @PostMapping("/")
     private ResponseEntity<String> submitAppointment(@RequestBody AppointmentDto appointmentDto){
         Appointment appointment = Appointment.builder()
-                                .first_name(appointmentDto.getF_name())
-                                .last_name(appointmentDto.getLast_name())
+                                .firstName(appointmentDto.getFirstName())
+                                .lastName(appointmentDto.getLastName())
                                 .email(appointmentDto.getEmail())
-                                .cell_phone(appointmentDto.getCell_phone())
-                                .pet_name(appointmentDto.getPet_name())
+                                .phoneNumber(appointmentDto.getPhoneNumber())
+                                .petName(appointmentDto.getPetName())
                                 .brea(appointmentDto.getBrea())
                                 .age(appointmentDto.getAge())
-                                .orther_information(appointmentDto.getOrther_information())
+                                .otherInformation(appointmentDto.getOtherInformation())
                                 .build();
         
-        appointmentRepository.save(appointment);
+        appointmentService.saveAppointment(appointment);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body("Appointment Saved\n");
     }
 
