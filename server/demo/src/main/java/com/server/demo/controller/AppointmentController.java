@@ -15,13 +15,19 @@ import com.server.demo.service.AppointmentService;
 
 @CrossOrigin("http://localhost:3000")
 @RestController
-@RequestMapping("/appointment")
+@RequestMapping("/appointment")// define base url
 public class AppointmentController {
     @Autowired
     AppointmentService appointmentService;
 
+    /*
+     * Post method, url = ip/appointment/
+     * @param AppointmentDto request body from user input json
+     * @return ResponseEntity 200/record created
+     */
     @PostMapping("/")
     private ResponseEntity<String> submitAppointment(@RequestBody AppointmentDto appointmentDto){
+        // create new appointment object base on user input
         Appointment appointment = Appointment.builder()
                                 .firstName(appointmentDto.getF_name())
                                 .lastName(appointmentDto.getLast_name())
@@ -33,7 +39,10 @@ public class AppointmentController {
                                 .otherInformation(appointmentDto.getOther_information())
                                 .build();
         
+        // save to the DB
         appointmentService.saveAppointment(appointment);
+
+        // return responseEntity
         return ResponseEntity.status(HttpStatus.ACCEPTED).body("Appointment Saved\n");
     }
 

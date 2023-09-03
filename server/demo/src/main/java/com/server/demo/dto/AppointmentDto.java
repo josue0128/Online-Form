@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/*
+ * Request body map out, variable name has to be match with request body
+ */
 @Data
 @Builder
 @AllArgsConstructor

@@ -14,6 +14,12 @@ import lombok.NoArgsConstructor;
 
 /*
  * DB Table appointment map out
+ * Table Field follows JPA default naming strategy for spring-boot will :
+        Replace dots with underscores
+        Change camel case to snake case
+        Lower-case table name
+    Table should see first_name, last_name.....
+    When initialize, no need to create table, just the DB is needed
  */
 @Data
 @Builder
