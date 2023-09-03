@@ -75,6 +75,13 @@ export const Form = () => {
     }
   }
   const submit = () =>{
+    fetch("http://localhost:8080/appointment/",{
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
     alert('submitting form')
     console.log(formData);
   }

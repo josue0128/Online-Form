@@ -3,6 +3,7 @@ package com.server.demo.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.server.demo.dto.AppointmentDto;
 import com.server.demo.model.Appointment;
-import com.server.demo.repository.AppointmentRepository;
 import com.server.demo.service.AppointmentService;
 
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("/appointment")
 public class AppointmentController {
@@ -22,14 +23,14 @@ public class AppointmentController {
     @PostMapping("/")
     private ResponseEntity<String> submitAppointment(@RequestBody AppointmentDto appointmentDto){
         Appointment appointment = Appointment.builder()
-                                .firstName(appointmentDto.getFirstName())
-                                .lastName(appointmentDto.getLastName())
+                                .firstName(appointmentDto.getF_name())
+                                .lastName(appointmentDto.getLast_name())
                                 .email(appointmentDto.getEmail())
-                                .phoneNumber(appointmentDto.getPhoneNumber())
-                                .petName(appointmentDto.getPetName())
-                                .brea(appointmentDto.getBrea())
+                                .phoneNumber(appointmentDto.getCell_phone())
+                                .petName(appointmentDto.getPet_name())
+                                .brea(appointmentDto.getBreed())
                                 .age(appointmentDto.getAge())
-                                .otherInformation(appointmentDto.getOtherInformation())
+                                .otherInformation(appointmentDto.getOther_information())
                                 .build();
         
         appointmentService.saveAppointment(appointment);

@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "appointment")
+@Table(name = "appointments")
 public class Appointment {
     @Id
     @GeneratedValue(
@@ -33,7 +33,6 @@ public class Appointment {
         allocationSize = 1
     )
     private int Id;
-    @Column(name = "firstName")
     private String firstName;
     private String lastName;
     private String email;
